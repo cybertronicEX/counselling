@@ -1,0 +1,151 @@
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: aqua;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  table th,
+  table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  table th {
+    background-color: grey;
+    text-align: left;
+    color: white;
+  }
+  
+  table tbody {
+    background-color: white;
+  }
+  
+  .button-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .button-container button.delete {
+    background-color: #f44336;
+  }
+  
+  .count-container {
+    margin-top: 20px;
+  }
+  
+  .count-container p {
+    margin-bottom: 5px;
+  }
+   */
+
+   /* Reset some default styles */
+body, h1, h2, h3, p, div, label, input, select, textarea {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set background color and font family */
+body {
+  background-color: #ffffff; /* Light blue background */
+  font-family: Arial, sans-serif;
+}
+
+/* Set heading style */
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Style the table */
+#referral-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(20, 18, 177, 0.548);
+}
+
+#referral-table th, #referral-table td {
+  padding: 10px;
+  border: 1px solid #d4e3ff; /* Light blue border */
+}
+
+#referral-table th {
+  background-color: #1e6be0; /* Dark blue header background */
+  color: #ffffff; /* White text color */
+  text-align: left;
+}
+
+/* Alternate row background color */
+#referral-table tbody tr:nth-child(even) {
+  background-color: #d4e3ff; /* Light blue background */
+}
+
+/* Style the contenteditable cells */
+[contenteditable="true"] {
+  outline: none;
+}
+
+/* Style the buttons */
+.button-container {
+  margin: 20px auto;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #1e6be0; /* Dark blue button background */
+  color: #ffffff; /* White text color */
+  border: none;
+  cursor: pointer;
+}
+
+button.delete {
+  background-color: #e01e1e; /* Red background for delete button */
+}
+
+button:hover {
+  background-color: #254e9c; /* Slightly darker blue on hover */
+}
+
+button.delete:hover{
+  background-color: #d4e3ff;
+  color:#e01e1e ;
+}
+/* Style the count container */
+.count-container {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.count-container p {
+  margin-bottom: 10px;
+}
+
+.count-container span {
+  font-weight: bold;
+}

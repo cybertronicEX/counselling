@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Logs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- <iframe src="../Admin_Navigation.html"   frameborder="0"  scrolling="0" height="100%" width="100%" ></iframe> -->
+  <h1>Admin Logs</h1>
+
+  <table id="admin-logs-table">
+    <thead>
+      <tr>
+        <th>Admin ID</th>
+        <th>Admin Name</th>
+        <th>Logged in Time</th>
+        <th>Log out Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="button-container">
+    <button onclick="addAdminLog()">Add</button>
+    <button class="delete" onclick="deleteAdminLog()">Delete</button>
+    <button onclick="saveData()">Save</button>
+  </div>
+
+  <script src="index.js"></script>
+  
+
+</body>
+</html>

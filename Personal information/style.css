@@ -1,0 +1,128 @@
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: skyblue;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .PIContainer{
+    height: 100%;
+  }
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-container label {
+    margin-top: 10px;
+  }
+  
+  .form-container input[type="text"],
+  .form-container input[type="tel"],
+  .form-container input[type="email"],
+  .form-container select,
+  .form-container textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+   */
+
+   /* Reset some default styles */
+body, h1, h2, h3, p, div, label, input, select, textarea {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set background color and font family */
+body {
+  background-color: #ffffff; /* Light blue background */
+  font-family: Arial, sans-serif;
+}
+
+/* Set heading style */
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Style the personal details container */
+.PIContainer {
+  margin: 20px auto;
+  width: 80%;
+  max-width: 800px;
+  border: 1px solid #d4e3ff; /* Light blue border */
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(36, 25, 185, 0.514);
+}
+
+/* Style the form container */
+.form-container {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-row-gap: 10px;
+}
+
+/* Style form labels */
+.form-container label {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* Style text input and select elements */
+.form-container input[type="text"],
+.form-container input[type="tel"],
+.form-container input[type="email"],
+.form-container input[type="date"],
+.form-container textarea,
+.form-container select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #d4e3ff; /* Light blue border */
+  border-radius: 5px;
+}
+
+/* Style the button container */
+.button-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #1e6be0; /* Dark blue button background */
+  color: #ffffff; /* White text color */
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #254e9c; /* Slightly darker blue on hover */
+}

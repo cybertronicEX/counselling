@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Referral Details Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Referral Details</h1>
+  <table id="referral-table">
+    <thead>
+      <tr>
+        <th>Company ID</th>
+        <th>Company Name</th>
+        <th>Full Name</th>
+        <th>Contact Number</th>
+        <th>Email</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+      <tr>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+        <td contenteditable="true"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="button-container">
+    <button onclick="addRow()">Add</button>
+    <button class="delete" onclick="deleteRow()">Delete</button>
+    <button onclick="saveData()">Save</button>
+  </div>
+
+  <div class="count-container">
+    <p>Total Referrals: <span id="total-referrals">0</span></p>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

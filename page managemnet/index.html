@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Page Management</h1>
+
+  <div class="section-container">
+    <h2 class="section-title">Appearance</h2>
+    <div class="option-item">
+      <label for="darkModeToggle">Dark Mode:</label>
+      <input id="darkModeToggle" type="checkbox" onchange="toggleDarkMode()" />
+    </div>
+    <div class="option-item">
+      <label for="wallpaperInput">Wallpaper:</label>
+      <input id="wallpaperInput" type="text" placeholder="Image URL" />
+      <button onclick="changeWallpaper()">Apply</button>
+    </div>
+    <div class="option-item">
+      <label for="fontSizeInput">Font Size:</label>
+      <input id="fontSizeInput" type="text" placeholder="Font Size (px)" />
+      <button onclick="changeFontSize()">Apply</button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

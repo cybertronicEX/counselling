@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Counsellor Details Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Counsellor Details</h1>
+  <table id="counsellor-table">
+    <thead>
+      <tr>
+        <th>Counsellor ID</th>
+        <th>NIC</th>
+        <th>Full Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Education</th>
+        <th>WorkHours</th>
+        <th>Management</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Existing table rows -->
+    </tbody>
+  </table>
+
+  <!-- Hidden modal form for adding new data -->
+  <div id="modal-form"  class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Enter Counsellor Details</h2>
+      <form onsubmit="return addCounsellor()" action="counsellerDetails.php" method="post">
+        <!-- <label>Counsellor ID:</label>
+          <input type="text" id="counsellor-id" name="counsellor-id" required> -->
+        <label>Nic:</label>
+          <input type="text" id="NIC" name="NIC" required>
+        <label>Full Name:</label>
+          <input type="text" id="FullName"  name="FullName" required>
+        <label>Address:</label>
+          <input type="text" id="Address"  name="Address" required>
+        <label>PhoneNo:</label>
+          <input type="text" id="PhoneNo" name="PhoneNo" required>
+        <label>DOB:</label>
+          <input type="date" id="DOB" name="DOB" required>
+        <label>Gender:</label>
+          <!-- <input type="text" id="Gender" required> -->
+          <select id="Gender" name="Gender">
+            <option value="male">male</option>
+            <option value="female">female</option>
+            <option value="other">other</option>
+          </select>
+        <label>Education:</label>
+          <input type="text" id="Education" name="Education" required>
+        <label>WorkHours:</label>
+          <!-- <input type="text" id="WorkHours" required> -->
+          <select id="WorkHours" name="WorkHours">
+            <option value="Part_Time">Part-Time</option>
+            <option value="Full_Time">Full-Time</option>
+          </select>
+          
+        <!-- Add input fields for other table headings as needed -->
+        
+        <input type="submit" value="Add Counsellor">
+      </form>
+    </div>
+  </div>
+<!-- ***************edit ***************** -->
+ <!-- Hidden modal form for editing data -->
+<div id="edit-modal-form" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeEditModal()">&times;</span>
+    <h2>Edit Counsellor Details</h2>
+    <!-- Add the form element here with the correct ID and onSubmit attribute -->
+    <form onsubmit="return saveEditedCounsellor()" action="counsellerDetails.php" method="post">
+      <!-- Add the input fields here with the correct names and IDs -->
+      <input type="hidden" id="editCounsellorId" name="counsellor_id">
+      <label>Nic:</label>
+      <input type="text" id="editNIC" name="NIC" required>
+      <label>Full Name:</label>
+      <input type="text" id="editFullName" name="FullName" required>
+      <label>Address:</label>
+      <input type="text" id="editAddress" name="Address" required>
+      <label>PhoneNo:</label>
+      <input type="text" id="editPhoneNo" name="PhoneNo" required>
+      <label>DOB:</label>
+      <input type="date" id="editDOB" name="DOB" required>
+      <label>Gender:</label>
+      <select id="editGender" name="Gender">
+        <option value="male">male</option>
+        <option value="female">female</option>
+        <option value="other">other</option>
+      </select>
+      <label>Education:</label>
+      <input type="text" id="editEducation" name="Education" required>
+      <label>WorkHours:</label>
+      <select id="editWorkHours" name="WorkHours">
+        <option value="Part_Time">Part-Time</option>
+        <option value="Full_Time">Full-Time</option>
+      </select>
+      <input type="submit" value="Save">
+    </form>
+  </div>
+</div>
+
+
+  <div class="button-container">
+    <button class="Add" onclick="openModal()">Add</button>
+    <!-- <button class="delete" onclick="deleteRow()">Delete</button>
+    <button class="Add" onclick="saveData()">Edit</button> -->
+  </div>
+
+  <div class="count-container">
+    <p>Total Counsellors: <span id="total-counsellors">0</span></p>
+    <p>Total Part-Time Counsellors: <span id="total-part-time">0</span></p>
+    <p>Total Full-Time Counsellors: <span id="total-full-time">0</span></p>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

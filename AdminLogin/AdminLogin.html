@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="AdminLoginStyles.css">
+</head>
+<body>
+    <div class="AdminLogin-container">
+        <h2>Admin Login</h2>
+        <form id="AdminLogin-form" method="POST" action="AdminLogin.php">
+            <label for="email">Username:</label>
+            <input type="text" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <input type="submit" value="Sign Up">
+        </form>
+        <p id="AdminLogin-status"></p>
+        <p>Already have an account? <a href="../Login/Login.html">Login</a></p>
+    </div>
+    <script src="AdminLoginScript.js"></script>
+</body>
+</html>

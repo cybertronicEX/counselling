@@ -1,0 +1,130 @@
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: aqua;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .section-container {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .option-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .option-item label {
+    margin-right: 10px;
+  }
+  
+  .option-item input[type="text"] {
+    margin-right: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .button-container button.dark-mode {
+    background-color: #333;
+  }
+   */
+
+   /* Reset some default styles */
+body, h1, h2, h3, p, div {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set background color and font family */
+body {
+  background-color: #ffffff; /* Light blue background */
+  font-family: Arial, sans-serif;
+}
+
+/* Set heading style */
+h1 {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Style the section container */
+.section-container {
+  margin: 20px auto;
+  width: 80%;
+  max-width: 800px;
+  border: 1px solid #d4e3ff; /* Light blue border */
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(28, 16, 187, 0.589);
+}
+
+/* Style the section title */
+.section-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style the option items */
+.option-item {
+  margin-bottom: 10px;
+}
+
+.option-item label {
+  display: inline-block;
+  width: 150px;
+}
+
+.option-item input[type="text"] {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #d4e3ff; /* Light blue border */
+  border-radius: 5px;
+}
+
+.option-item button {
+  padding: 5px 10px;
+  background-color: #1e6be0; /* Dark blue button background */
+  color: #ffffff; /* White text color */
+  border: none;
+  cursor: pointer;
+}
+
+/* Style the dark mode toggle switch */
+.option-item input[type="checkbox"] {
+  margin-left: 10px;
+}
+
