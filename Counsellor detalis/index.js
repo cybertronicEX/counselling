@@ -127,7 +127,7 @@ function fetchCounsellorDetails() {
             <td>${counsellor.education}</td>
             <td>${counsellor.work_hours}</td>
             <td>
-              <button class="editRow" onclick="editRow  (this)">Edit</button>
+              <button class="editRow"  onclick="editRow(this.parentNode.parentNode)">Edit</button>
               <button class="delete" onclick="deleteRow(this)">Delete</button>
             </td>
           </tr>
@@ -153,37 +153,60 @@ function fetchCounsellorDetails() {
 function openEditModal() {
   editModal.style.display = "block";
 }
-function editRow(button) {
-  const row = button.closest('tr');
-  const counsellorId = row.cells[0].textContent; // Assuming the first cell contains the Counsellor ID
+function editRow(row) {
+  // const row = button.closest('tr');
+  const counsellorId = row.querySelector('td:nth-child(1)').textContent;
+  // const counsellorId = this.dataset.counsellorId;
+    console.log("Selected counsellor ID:", counsellorId);
 
-  // Fetch the existing data for the selected counsellor from the server
-  fetch('counsellerDetails.php', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      counsellor_id: counsellorId
-    })
-  })
+  // const requestData = {
+  //   counsellor_id: counsellorId
+  // };
+
+  // fetch('counsellerUpdate.php', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify(requestData)
+  // })
+
+   // Use URLSearchParams to add the counsellorId as a query parameter
+  //  const urlParams = new URLSearchParams({ counsellor_id: counsellorId });
+
+   fetch(`counsellerDetails.php?counsellor_id=${counsellorId}` )
     .then(response => response.json())
     .then(data => {
+      if (data && Array.isArray(data) && data.length > 0) {
       // Populate the edit form with the existing data
-      document.getElementById('editCounsellorId').value = data.counsellor_id;
-      document.getElementById('editNIC').value = data.NIC;
-      document.getElementById("editFullName").value  = data.FullName;
-      document.getElementById("editAddress").value = data.Address;
-      document.getElementById("editPhoneNo").value = data.PhoneNo;
-      document.getElementById("editDOB").value = data.DOB;
-      document.getElementById("editGender").value = data.Gender;
-      document.getElementById("editEducation").value = data.Education;
-      document.getElementById("editWorkHours").value = data.WorkHours;
-      // Populate other input fields with the corresponding data
+      // document.getElementById('editCounsellorId').value = data[0].counsellor_id;
+      // document.getElementById('editNIC').value = data[0].NIC;
+      // document.getElementById("editFullName").value  = data[0].FullName;
+      // document.getElementById("editAddress").value = data[0].Address;
+      // document.getElementById("editPhoneNo").value = data[0].PhoneNo;
+      // document.getElementById("editDOB").value = data[0].DOB;
+      // document.getElementById("editGender").value = data[0].Gender;
+      // document.getElementById("editEducation").value = data[0].Education;
+      // document.getElementById("editWorkHours").value = data[0].WorkHours;
+      document.getElementById('editCounsellorId').value = counsellorId;
+      document.getElementById('editNIC').value = row.querySelector('td:nth-child(2)').textContent;
+      document.getElementById("editFullName").value = row.querySelector('td:nth-child(3)').textContent;
+      document.getElementById("editAddress").value = row.querySelector('td:nth-child(4)').textContent;
+      document.getElementById("editPhoneNo").value = row.querySelector('td:nth-child(5)').textContent;
+      document.getElementById("editDOB").value = row.querySelector('td:nth-child(6)').textContent;
+      document.getElementById("editGender").value = row.querySelector('td:nth-child(7)').textContent;
+      document.getElementById("editEducation").value = row.querySelector('td:nth-child(8)').textContent;
+      document.getElementById("editWorkHours").value = row.querySelector('td:nth-child(9)').textContent;
+    
 
       // Show the edit modal form
       document.getElementById("edit-modal-form").style.display = 'block';
+      }
+      else {
+        console.error('No data found for the given counsellor ID.');
+      }
     })
+    
     .catch(error => console.error('Error fetching data:', error));
 }
 
@@ -198,31 +221,36 @@ function saveEditedCounsellor() {
   const editedNIC = document.getElementById('editNIC').value;
   const editedFullName = document.getElementById('editFullName').value;
   const editedAddress = document.getElementById('editAddress').value;
-  const editedPhoneNo = document.getElementById('PhoneNo').value;
+  const editedPhoneNo = document.getElementById('editPhoneNo').value;
   const editedDOB = document.getElementById('editDOB').value;
   const editedGender = document.getElementById('editGender').value;
   const editedEducation = document.getElementById('editEducation').value;
   const editedWorkHours = document.getElementById('editWorkHours').value;
   // Get other edited data fields
 
+  const editedData = {
+    counsellor_id: editedCounsellorId,
+    nic: editedNIC,
+    full_name: editedFullName,
+    address: editedAddress,
+    phone_number: editedPhoneNo,
+    dob: editedDOB,
+    gender: editedGender,
+    education: editedEducation,
+    work_hours: editedWorkHours
+  };
+  
+
+  console.log(editedData);
+
   // Send the edited data to the server to update the record in the database
-  fetch('counsellerDetails.php', {
+  fetch('counsellerUpdate.php', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      counsellor_id: editedCounsellorId,
-      NIC: editedNIC,
-      FullName:editedFullName,
-      Address:editedAddress,
-      PhoneNo:editedPhoneNo,
-      DOB:editedDOB,
-      Gender:editedGender,
-      Education:editedEducation,
-      WorkHours:editedWorkHours,
-      // Include other edited data fields here
-    })
+    body: JSON.stringify(editedData
+    )
   })
     .then(response => response.json())
     .then(data => {
@@ -248,17 +276,15 @@ function saveEditedCounsellor() {
 // Function to handle the "Delete" button click
 function deleteRow(button) {
   const row = button.closest('tr');
-  const counsellorId = row.cells[0].textContent; // Assuming the first cell contains the Counsellor ID
-
+  // const counsellorId = row.cells[0].textContent; // Assuming the first cell contains the Counsellor ID
+  const counsellorId = row.querySelector('td:nth-child(1)').textContent;
   // Send a DELETE request to the server to delete the counsellor
   fetch('counsellerDetails.php', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      counsellor_id: counsellorId
-    })
+    body: JSON.stringify({counsellor_id:counsellorId})
   })
     .then(response => response.json())
     .then(data => {
@@ -266,9 +292,10 @@ function deleteRow(button) {
       // If the data was deleted successfully, remove the row from the table
       if (data.message === 'Data deleted successfully.') {
         
-        row.remove();
-        alert('deleted');
-        window.location.href = 'index.php';
+        fetchCounsellorDetails();
+      }
+      else {
+        alert('Failed to delete data.');
       }
     })
     .catch(error => console.error('Error deleting data:', error));

@@ -35,21 +35,21 @@
     // Check if the form is submitted and call the function to store data
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // $counsellorId = $_POST["counsellor-id"];
-        $nic = $_POST["NIC"];
-        $fullName = $_POST["FullName"];
-        $address = $_POST["Address"];
-        $phoneNo = $_POST["PhoneNo"];
-        $dob = $_POST["DOB"];
-        $gender = $_POST["Gender"];
-        $education = $_POST["Education"];
-        $workHours = $_POST["WorkHours"];
+        $nic = $_POST["nic"];
+        $fullName = $_POST["full_name"];
+        $address = $_POST["address"];
+        $phoneNo = $_POST["phone_number"];
+        $dob = $_POST["dob"];
+        $gender = $_POST["gender"];
+        $education = $_POST["education"];
+        $workHours = $_POST["work_hours"];
 
         // Call the function to store data and check the result
         if (storeCounsellorDetails( $nic, $fullName, $address, $phoneNo, $dob, $gender, $education, $workHours)) {
-            echo "<h2>Data stored successfully.</h2>";
+            echo json_encode(array("message" => "Data stored successfully."));
             header("Refresh:0.1 ; URL=index.html");
         } else {
-            echo "<h2>Failed to store data.</h2>";
+            echo json_encode(array("message" => "Failed to store data."));
         }
     }
 
@@ -141,66 +141,73 @@
 
         // Call the function to delete data and check the result
         if (deleteCounsellor($counsellorId)) {
-            echo json_encode(array("message" => "Data deleted successfully."));
+            header('Content-Type: application/json');
+            echo json_encode(array("message" => "Data deleted successfully php."));
+            // echo json_encode(array("message" => "Data deleted successfully."));
         } else {
-            echo json_encode(array("message" => "Failed to delete data."));
+            header('Content-Type: application/json');
+            echo json_encode(array("message" => "Failed to delete data php."));
         }
     }
 
     //------------------------------------EDIT-----------------------------------------
     // Function to update Counsellor details in the MySQL database
-    function updateCounsellorDetails($counsellorId, $nic, $fullName, $address, $phoneNo, $dob, $gender, $education, $workHours) {
-        // Replace these with your actual database credentials
-        $host = "localhost";
-        $username = "admin1";
-        $password = "123";
-        $dbname = "adminlogin";
+    
+// // Function to update counsellor details in the database
+// function updateCounsellorDetails($counsellorId, $nic, $fullName, $address, $phoneNo, $dob, $gender, $education, $workHours) {
+//     // Replace these with your actual database credentials
+//     $host = "localhost";
+//     $username = "admin1";
+//     $password = "123";
+//     $dbname = "adminlogin";
 
-        // Create a connection to the database
-        $conn = new mysqli($host, $username, $password, $dbname);
+//     // Create a connection to the database
+//     $conn = new mysqli($host, $username, $password, $dbname);
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+//     // Check connection
+//     if ($conn->connect_error) {
+//         die("Connection failed: " . $conn->connect_error);
+//     }
 
-        // Prepare the SQL query to update data
-        $stmt = $conn->prepare("UPDATE counsellers SET nic=?, full_name=?, address=?, phone_number=?, dob=?, gender=?, education=?, work_hours=? WHERE counsellor_id=?");
-        $stmt->bind_param("sssissssi", $nic, $fullName, $address, $phoneNo, $dob, $gender, $education, $workHours, $counsellorId);
+//     // Prepare the SQL query to update data
+//     $stmt = $conn->prepare("UPDATE counsellers SET nic=?, full_name=?, address=?, phone_number=?, dob=?, gender=?, education=?, work_hours=? WHERE counsellor_id=?");
+//     $stmt->bind_param("sssissssi", $nic, $fullName, $address, $phoneNo, $dob, $gender, $education, $workHours, $counsellorId);
 
-        // Execute the query
-        if ($stmt->execute()) {
-            $stmt->close();
-            $conn->close();
-            return true; // Data updated successfully
-        } else {
-            $stmt->close();
-            $conn->close();
-            return false; // Failed to update data
-        }
-    }
+//     // Execute the query
+//     if ($stmt->execute()) {
+//         $stmt->close();
+//         $conn->close();
+//         return true; // Data updated successfully
+//     } else {
+//         $stmt->close();
+//         $conn->close();
+//         return false; // Failed to update data
+//     }
+// }
 
-    // Check if the form is submitted and call the function to update data
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $requestData = file_get_contents('php://input');
-        $postData = json_decode($requestData, true);
-        $counsellorId = $_POST["counsellor_id"];
-        $nic = $_POST["NIC"];
-        $fullName = $_POST["FullName"];
-        $address = $_POST["Address"];
-        $phoneNo = $_POST["PhoneNo"];
-        $dob = $_POST["DOB"];
-        $gender = $_POST["Gender"];
-        $education = $_POST["Education"];
-        $workHours = $_POST["WorkHours"];
+// // Check if the form is submitted and call the function to update data
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $requestData = file_get_contents('php://input');
+//     $postData = json_decode($requestData, true);
+//     $counsellorId = $postData["counsellor_id"]; // Use $postData to get the data sent in the JSON body
+//     $nic = $postData["nic"];
+//     $fullName = $postData["full_name"];
+//     $address = $postData["address"];
+//     $phoneNo = $postData["phone_number"];
+//     $dob = $postData["dob"];
+//     $gender = $postData["gender"];
+//     $education = $postData["education"];
+//     $workHours = $postData["work_hours"];
 
-        // Call the function to update data and check the result
-        if (updateCounsellorDetails($counsellorId, $nic, $fullName, $address, $phoneNo, $dob, $gender, $education, $workHours)) {
-            echo json_encode(array("message" => "Data updated successfully."));
-        } else {
-            echo json_encode(array("message" => "Failed to update data."));
-        }
-    }
+//     // Call the function to update data and check the result
+//     if (updateCounsellorDetails($counsellorId, $nic, $fullName, $address, $phoneNo, $dob, $gender, $education, $workHours)) {
+//         echo json_encode(array("message" => "Data updated successfully."));
+//     } else {
+//         echo json_encode(array("message" => "Failed to update data."));
+//     }
+// }
+
+
 
 
 
