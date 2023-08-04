@@ -1,0 +1,51 @@
+Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [email] => admin
+            [login_time] => 2023-08-04 13:22:33
+            [notes] => aaaa
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [email] => admin
+            [login_time] => 2023-08-04 13:22:56
+            [notes] => 0000-00-00 00:00:00
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [email] => admin
+            [login_time] => 2023-08-04 13:24:07
+            [notes] => dasdasdasdadasdasd
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [email] => admin
+            [login_time] => 2023-08-04 13:24:07
+            [notes] => dasda
+        )
+
+    [4] => Array
+        (
+            [id] => 5
+            [email] => admin
+            [login_time] => 2023-08-04 13:34:41
+            [notes] => F
+        )
+
+    [5] => Array
+        (
+            [id] => 6
+            [email] => admin
+            [login_time] => 2023-08-04 14:47:47
+            [notes] => TEST
+        )
+
+)

@@ -53,55 +53,13 @@ function addCounsellor() {
   var tableBody = document.querySelector("#counsellor-table tbody");
   tableBody.appendChild(newRow);
 
-//   // Add event listener to the "Add" button to refresh the data after adding a new counsellor
-//   document.querySelector('.button-container .Add').addEventListener('click', () => {
-//   fetchCounsellorDetails();
-// });
   // Close the modal form
   closeModal();
 
   // Prevent the default form submission behavior
   return false;
 }
-//--------------------------------------------------------------------------------------------------
-// document.addEventListener('DOMContentLoaded', function() {
-//   // Function to fetch data from the server and populate the table
-//   function fetchCounsellorData() {
-//     // Make an AJAX call to the PHP file that retrieves data from the database
-//     var xhr = new XMLHttpRequest();
-//     xhr.open('GET', 'counsellerDetails.php', true);
-//     xhr.onload = function() {
-//       if (xhr.status === 200) {
-//         // Parse the JSON response received from the server
-//         var data = JSON.parse(xhr.responseText);
 
-//         // Generate table rows dynamically using the fetched data
-//         var tableBody = document.querySelector("#counsellor-table tbody");
-//         data.forEach(function(row) {
-//           var newRow = document.createElement("tr");
-//           newRow.innerHTML = `
-//             <td contenteditable="true">${row.counsellor_id}</td>
-//             <td contenteditable="true">${row.nic}</td>
-//             <td contenteditable="true">${row.full_name}</td>
-//             <td contenteditable="true">${row.address}</td>
-//             <td contenteditable="true">${row.phone_number}</td>
-//             <td contenteditable="true">${row.dob}</td>
-//             <td contenteditable="true">${row.gender}</td>
-//             <td contenteditable="true">${row.education}</td>
-//             <td contenteditable="true">${row.work_hours}</td>
-//           `;
-//           tableBody.appendChild(newRow);
-//         });
-//       } else {
-//         console.error('Error fetching data from the server.');
-//       }
-//     };
-//     xhr.send();
-//   }
-
-//   // Call the function to fetch and populate the table on page load
-//   fetchCounsellorData();
-// });
 //--------------------------------GET------------------------------------------------------------------
 
 // Function to fetch Counsellor details from the server and populate the table
@@ -159,35 +117,12 @@ function editRow(row) {
   // const counsellorId = this.dataset.counsellorId;
     console.log("Selected counsellor ID:", counsellorId);
 
-  // const requestData = {
-  //   counsellor_id: counsellorId
-  // };
-
-  // fetch('counsellerUpdate.php', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify(requestData)
-  // })
-
-   // Use URLSearchParams to add the counsellorId as a query parameter
-  //  const urlParams = new URLSearchParams({ counsellor_id: counsellorId });
-
+ 
    fetch(`counsellerDetails.php?counsellor_id=${counsellorId}` )
     .then(response => response.json())
     .then(data => {
       if (data && Array.isArray(data) && data.length > 0) {
-      // Populate the edit form with the existing data
-      // document.getElementById('editCounsellorId').value = data[0].counsellor_id;
-      // document.getElementById('editNIC').value = data[0].NIC;
-      // document.getElementById("editFullName").value  = data[0].FullName;
-      // document.getElementById("editAddress").value = data[0].Address;
-      // document.getElementById("editPhoneNo").value = data[0].PhoneNo;
-      // document.getElementById("editDOB").value = data[0].DOB;
-      // document.getElementById("editGender").value = data[0].Gender;
-      // document.getElementById("editEducation").value = data[0].Education;
-      // document.getElementById("editWorkHours").value = data[0].WorkHours;
+      
       document.getElementById('editCounsellorId').value = counsellorId;
       document.getElementById('editNIC').value = row.querySelector('td:nth-child(2)').textContent;
       document.getElementById("editFullName").value = row.querySelector('td:nth-child(3)').textContent;
@@ -305,15 +240,3 @@ function deleteRow(button) {
 fetchCounsellorDetails();
 
 
-
-// // Function to open the modal for adding a new counsellor
-// function openModal() {
-//   const modal = document.getElementById('modal-form');
-//   modal.style.display = 'block';
-// }
-
-// // Function to close the modal
-// function closeModal() {
-//   const modal = document.getElementById('modal-form');
-//   modal.style.display = 'none';
-// }
