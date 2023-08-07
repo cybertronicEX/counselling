@@ -1,0 +1,23 @@
+Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [date] => 0000-00-00
+            [time] => 01:25:26
+            [user] => test1
+            [counsellor] => test1
+            [status] => Ongoing
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [date] => 0000-00-00
+            [time] => 01:25:26
+            [user] => test2
+            [counsellor] => test2
+            [status] => cancelled
+        )
+
+)

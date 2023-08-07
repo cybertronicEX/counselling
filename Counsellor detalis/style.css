@@ -10,6 +10,14 @@ body {
 
 h1 {
   margin: 20px 0;
+  color:#263af5
+}
+.custom-input {
+  border: 1px solid  #1e6be0;
+  box-shadow: 0 0 5px rgba(98, 98, 230, 0.966);
+  padding: 8px;
+  font-size: 16px;
+  
 }
 
 table {
@@ -55,24 +63,33 @@ tr:nth-child(even) {
   border-radius: 5px;
 }
 
-.Add{
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: #1e6be0; /* Dark blue button background */
+  color: #ffffff; /* White text color */
+  border: none;
+  cursor: pointer;
+}
+
+button.Add{
   background-color: #007bff;
 }
-.Add:hover {
-  background-color: #ffffff;
-  color: #007bff;
-  border: #007bff 1px solid;
+button.Add:hover {
+  background-color: #254e9c;
+  color: #ffffff;
+  /* border: #007bff 1px solid; */
 }
 
 
-.delete {
+button.delete {
   background-color: #cb1729;
 }
 
-.delete:hover {
+button.delete:hover {
   background-color: #ffffff;
   color: #cb1729;
-  border: #cb1729 1px solid;
+  /* border: #cb1729 1px solid; */
 }
 
 .modal {
@@ -139,3 +156,45 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: #0056b3;
 }
+
+
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px;
+  width: 100vw;
+}
+
+/* .header h1 {
+  margin: 0;
+  padding: 0;
+  color: white;
+} */
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type="text"] {
+  padding: 8px;
+  border: 2px solid #1e6be0;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-container button {
+  padding: 8px 15px;
+  background-color: #1e6be0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+

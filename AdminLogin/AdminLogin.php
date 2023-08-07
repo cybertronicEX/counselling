@@ -22,6 +22,13 @@ else{
     $stmt->bind_param("s" ,$email);
     $stmt->execute();
     $stmt_result = $stmt->get_result();
+
+    $loginTime = date('Y-m-d H:i:s');
+    $stmt = $conn->prepare("INSERT INTO login_logout_history (email, login_time) VALUES (?, ?)");
+    $stmt->bind_param("ss", $email, $loginTime);
+    $stmt->execute();
+    $stmt->close();
+
     if($stmt_result->num_rows > 0){
         $data = $stmt_result->fetch_assoc();
         if($data['password']=== $password){
