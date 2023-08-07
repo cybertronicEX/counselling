@@ -5,8 +5,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- <iframe src="../Admin_Navigation.html"   frameborder="0"  scrolling="0" height="100%" width="100%" ></iframe> -->
-  <h1>Admin Logs</h1>
+  <div class="header">
+    <h1>User Details</h1>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search by name...">
+      <button onclick="searchUsers()">Search</button>
+    </div>
+  </div>
 
   <table id="admin-logs-table">
     <thead>
@@ -33,7 +38,7 @@
         <input type="hidden" id="name" name="name" required>
         <input type="hidden" id="logintime" name="logintime" required>
         <label>Notes</label>
-        <input type="text" id="notes" name="notes" required>
+        <input type="text" id="notes" name="notes"  class="custom-input" required>
         <input type="submit" value="Save">
       </form>
     </div>

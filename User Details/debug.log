@@ -1,0 +1,31 @@
+Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [name] => test1
+            [address] => test1
+            [phone] => 10000
+            [dob] => 0000-00-00
+            [gender] => test1
+            [relationship] => test1
+            [occupation] => test1
+            [username] => test1
+            [password] => test2
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [name] => [value-2]
+            [address] => [value-3]
+            [phone] => 5
+            [dob] => 1000-04-04
+            [gender] => [value-6]
+            [relationship] => [value-7]
+            [occupation] => [value-8]
+            [username] => [value-9]
+            [password] => [value-10]
+        )
+
+)

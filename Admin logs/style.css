@@ -1,58 +1,3 @@
-/* body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: aqua;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  table th,
-  table td {
-    padding: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  table th {
-    background-color: grey;
-    text-align: left;
-    color: white;
-  }
-  
-  table tbody {
-    background-color: white;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .button-container button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  .button-container button.delete {
-    background-color: #f44336;
-  }
-   */
-
    /* Reset some default styles */
 body, h1, h2, h3, p, table {
   margin: 0;
@@ -68,6 +13,7 @@ body {
 h1 {
   text-align: center;
   padding: 20px;
+  color:#263af5
 }
 
 #edit-modal-form {
@@ -124,7 +70,13 @@ button:hover {
   background-color: #254e9c; /* Slightly darker blue on hover */
 }
 
-
+.custom-input {
+  border: 1px solid  #1e6be0;
+  box-shadow: 0 0 5px rgba(98, 98, 230, 0.966);
+  padding: 8px;
+  font-size: 16px;
+  
+}
 
 
 
@@ -189,3 +141,45 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: #0056b3;
 }
+
+
+
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+/* .header h1 {
+  margin: 0;
+  padding: 0;
+  color: white;
+} */
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type="text"] {
+  padding: 8px;
+  border: 2px solid #1e6be0;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-container button {
+  padding: 8px 15px;
+  background-color: #1e6be0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+

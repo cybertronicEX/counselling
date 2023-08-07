@@ -85,7 +85,7 @@ function fetchCounsellorDetails() {
             <td>${counsellor.education}</td>
             <td>${counsellor.work_hours}</td>
             <td>
-              <button class="editRow"  onclick="editRow(this.parentNode.parentNode)">Edit</button>
+              <button class="Add"  onclick="editRow(this.parentNode.parentNode)">Edit</button>
               <button class="delete" onclick="deleteRow(this)">Delete</button>
             </td>
           </tr>
@@ -103,6 +103,20 @@ function fetchCounsellorDetails() {
       document.getElementById('total-full-time').textContent = fullTimeCount;
     })
     .catch(error => console.error('Error fetching data:', error));
+}
+
+function searchUsers() {
+  const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+  const tableRows = document.querySelectorAll('#counsellor-table tbody tr');
+
+  tableRows.forEach(row => {
+    const full_name = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+    if (full_name.includes(searchInput)) {
+      row.style.display = ''; // Show matching rows
+    } else {
+      row.style.display = 'none'; // Hide non-matching rows
+    }
+  });
 }
 //-----------------------EDIT------------------------------------------------
 
@@ -214,28 +228,32 @@ function deleteRow(button) {
   // const counsellorId = row.cells[0].textContent; // Assuming the first cell contains the Counsellor ID
   const counsellorId = row.querySelector('td:nth-child(1)').textContent;
   // Send a DELETE request to the server to delete the counsellor
-  fetch('counsellerDetails.php', {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({counsellor_id:counsellorId})
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Data response:', data);
-      // If the data was deleted successfully, remove the row from the table
-      if (data.message === 'Data deleted successfully.') {
-        
-        fetchCounsellorDetails();
-      }
-      else {
-        alert('Failed to delete data.');
-      }
+  const confirmed = window.confirm("Are you sure you want to delete this record?");
+  
+  if (confirmed) {
+    fetch('counsellerDelete.php', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({counsellor_id:counsellorId})
     })
-    .catch(error => console.error('Error deleting data:', error));
+      .then(response => response.json())
+      .then(data => {
+        console.log('Data response:', data);
+        // If the data was deleted successfully, remove the row from the table
+        if (data.message === 'Data deleted successfully.') {
+          alert('Data deletion error.');
+          
+        }
+        else {
+          alert('successfully deleted data.');
+          fetchCounsellorDetails();
+        }
+      })
+      .catch(error => console.error('Error deleting data:', error));
+  }
 }
-
 // Call the function to fetch initial data on page load
 fetchCounsellorDetails();
 

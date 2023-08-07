@@ -29,6 +29,20 @@ function fetchAdminLogs() {
     })
     .catch(error => console.error('Error fetching data:', error));
 }
+
+function searchUsers() {
+  const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+  const tableRows = document.querySelectorAll('#admin-logs-table tbody tr');
+
+  tableRows.forEach(row => {
+    const email = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+    if (email.includes(searchInput)) {
+      row.style.display = ''; // Show matching rows
+    } else {
+      row.style.display = 'none'; // Hide non-matching rows
+    }
+  });
+}
 //-----------------------EDIT------------------------------------------------
 
 
