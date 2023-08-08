@@ -23,6 +23,9 @@ else{
     $stmt->execute();
     $stmt_result = $stmt->get_result();
 
+    // Set your local timezone
+    date_default_timezone_set('Asia/Colombo'); // Replace with your actual timezone
+
     $loginTime = date('Y-m-d H:i:s');
     $stmt = $conn->prepare("INSERT INTO login_logout_history (email, login_time) VALUES (?, ?)");
     $stmt->bind_param("ss", $email, $loginTime);
