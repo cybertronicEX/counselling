@@ -1,0 +1,11 @@
+Array
+(
+    [nic] => 200000000
+    [fullname] => monkey d luffy
+    [address] => 7 seas
+    [phoneno] => 666
+    [dob] => 2023-08-31
+    [gender] => male
+    [education] => none
+    [workhours] => Full_Time
+)

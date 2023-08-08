@@ -20,45 +20,67 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-// When the user submits the form, add the counsellor details to the table
-function addCounsellor() {
-  // Get the input values from the form
-  var counsellorId = document.getElementById("counsellor-id").value;
-  var NIC = document.getElementById("NIC").value;
-  var FullName = document.getElementById("FullName").value;
-  var Address = document.getElementById("Address").value;
-  var PhoneNo = document.getElementById("PhoneNo").value;
-  var DOB = document.getElementById("DOB").value;
-  var Gender = document.getElementById("Gender").value;
-  var Education = document.getElementById("Education").value;
-  var WorkHours = document.getElementById("WorkHours").value;
-  // Get other input values as needed
+function addCounsellors() {
+  //const counsellor_id = document.getElementById('counsellor_id').value
+  const nic = document.getElementById('nic').value;
+  const fullname = document.getElementById('fullname').value;
+  const address = document.getElementById('address').value;
+  const phoneno = document.getElementById('phoneno').value;
+  const dob = document.getElementById('dob').value;
+  const gender = document.getElementById('gender').value;
+  const education = document.getElementById('education').value;
+  const workhours = document.getElementById('workhours').value;
 
-  // Create a new table row with the input values
-  var newRow = document.createElement("tr");
-  newRow.innerHTML = `
-    <td contenteditable="true">${counsellorId}</td>
-    <td contenteditable="true">${NIC}</td>
-    <td contenteditable="true">${FullName}</td>
-    <td contenteditable="true">${Address}</td>
-    <td contenteditable="true">${PhoneNo}</td>
-    <td contenteditable="true">${DOB}</td>
-    <td contenteditable="true">${Gender}</td>
-    <td contenteditable="true">${Education}</td>
-    <td contenteditable="true">${WorkHours}</td>
-    <!-- Add other table data cells here with corresponding input values -->
-  `;
+  const requestData = {
+    // counsellorId:counsellor_id,
+    nic: nic,
+    fullname: fullname,
+    address: address,
+    phoneno: phoneno,
+    dob: dob,
+    gender: gender,
+    education: education,
+    workhours: workhours
+  };
 
-  // Append the new row to the table body
-  var tableBody = document.querySelector("#counsellor-table tbody");
-  tableBody.appendChild(newRow);
+  fetch('counsellerAdd.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+  })
+   .then(response => response.json())
+  // .then(response => {
+  //   console.log('Raw Response:', response);
+  //   return response.json();
+  // })
+  .then(data => {
+    console.log('Data:', data);
+    if (data.message === 'Data stored successfully.') {
+    
+      alert('Failed to store data.');
+      // Optionally, you can refresh the page or perform other actions
+    } else {
+      
+      closeModal();
+      fetchCounsellorDetails();
 
-  // Close the modal form
-  closeModal();
-
-  // Prevent the default form submission behavior
+      alert('Data stored successfully.');
+    }
+  })
+  .catch(error => {
+    console.error('Error storing data:', error);
+    //alert('An error occurred while storing data.'+ error.message);
+    if (error instanceof TypeError && error.message.includes('unexpected token')) {
+      alert('Error: Unexpected response from the server. Please check your PHP script.');
+    } else {
+      console.log('An error occurred while storing data: ' + error.message);
+    }
+  });
   return false;
 }
+
 
 //--------------------------------GET------------------------------------------------------------------
 
