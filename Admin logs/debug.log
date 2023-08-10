@@ -56,4 +56,28 @@ Array
             [notes] => 
         )
 
+    [7] => Array
+        (
+            [id] => 8
+            [email] => admin
+            [login_time] => 2023-08-10 11:19:36
+            [notes] => 
+        )
+
+    [8] => Array
+        (
+            [id] => 9
+            [email] => admin
+            [login_time] => 2023-08-10 11:36:57
+            [notes] => 
+        )
+
+    [9] => Array
+        (
+            [id] => 10
+            [email] => admin1
+            [login_time] => 2023-08-10 11:38:58
+            [notes] => sessions working successfuly
+        )
+
 )

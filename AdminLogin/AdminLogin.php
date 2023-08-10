@@ -1,15 +1,16 @@
 
 
 <?php
+session_start();
 $host = "localhost"; // Replace with your MySQL server host
-$username = "admin"; // Replace with your database username
-$password = "admin"; // Replace with your database password
+$usernames = "admin"; // Replace with your database username
+$passwords = "admin"; // Replace with your database password
 $dbname = "adminlogin"; // Replace with your database name
 
 $email = $_POST['email'];
 $password =$_POST['password'];
 // Create a connection
-$conn = new mysqli($host, $username, $password, $dbname);
+$conn = new mysqli($host, $usernames, $passwords, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -37,6 +38,7 @@ else{
         if($data['password']=== $password){
             // echo "<h2>login successful</h2>";
             // echo "<script type='text/javascript'>alert('login successful');</script>";
+            $_SESSION['email'] = $email; // Store user email in session
             header("Location: ../Admin_Navigation.html");
             exit;
         }else{
