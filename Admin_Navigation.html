@@ -9,6 +9,7 @@
     <!--================ style ==================-->
     <link rel="stylesheet" href="navigation.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
@@ -35,16 +36,6 @@
                     </a>
                 </li>
 
-                <!-- <li>
-                    <a href="Personal information/index.html" target="contentFrame">
-                        <span class="icon">               
-                            <ion-icon name="person-outline"></ion-icon>
-                        </span>
-                        <span class="title">My Profile</span>
-                    </a>
-                </li> -->
-
-                
 
                 <li>
                     <a href="User Details/index.html" target="contentFrame">
@@ -63,15 +54,6 @@
                         <span class="title">Counsellor Details</span>
                     </a>
                 </li>
-<!-- 
-                <li>
-                    <a href="reffreal details/index.html" target="contentFrame">
-                        <span class="icon">
-                            <ion-icon name="document-text-outline"></ion-icon>
-                        </span>
-                        <span class="title">Referral Details</span>
-                    </a>
-                </li> -->
 
                 <li>
                     <a href="session detAILS/index.html" target="contentFrame">
@@ -81,25 +63,7 @@
                         <span class="title">Sessions</span>
                     </a>
                 </li>
-<!-- 
-                <li>
-                    <a href="page managemnet/index.html" target="contentFrame">
-                        <span class="icon">
-                            <ion-icon name="book-outline"></ion-icon>
-                        </span>
-                        <span class="title">Page Management</span>
-                    </a>
-                </li>
-                     -->
-                <!-- <li>
-                    <a href="settings/index.html" target="contentFrame">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-                 -->
+
                 <li>
                     <a href="Admin logs/Index.html" target="contentFrame">
                         <span class="icon">
@@ -109,29 +73,28 @@
                     </a>
                 </li>
 
-                <li>
-                    <!-- <a href=""> -->
-                        <a onclick="showConfirmation()">
-
-                            <span class="icon">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </span>
-                            <span class="title">Log Out</span>
-                        </a>
-                        <script>
-                            function showConfirmation() {
-                                var result = confirm('Are you sure you want to Logout?');
-                                if (result) {
-                                    // Code to execute when the user clicks "OK"
-                                    alert('Logged out sucessfully!');
-                                    window.location.href="./Login/Login.html"
-                                } else {
-                                    // Code to execute when the user clicks "Cancel"
-                                    alert('You clicked Cancel!');
-                                }
+                <li> 
+                    <a onclick="showConfirmation()">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Log Out</span>
+                    </a>
+                    <script>
+                        function showConfirmation() {
+                            var result = confirm('Are you sure you want to Logout?');
+                            if (result) {
+                                fetch('logout.php')
+                                // Code to execute when the user clicks "OK"
+                                alert('Logged out sucessfully!');
+                                window.location.href="./Login/Login.html"
+                            } else {
+                                // Code to execute when the user clicks "Cancel"
+                                alert('You clicked Cancel!');
                             }
-                        </script>
-                    <!-- </a> -->
+                        }
+                    </script>
+                    
                 </li>
             </ul>
         </div>
@@ -143,24 +106,39 @@
                     <ion-icon name="menu-outline" class="custom-icon"></ion-icon>
                 </div>
                 <div class="AppName">
-                    
-                    <h1>The Guiding Light</h1>
+                    <h1>The Guiding Light</h1>      
                 </div>
-                
-
-                <!-- <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div> -->
+                <div id="sessionData"></div>
             </div>
                 <div class="mainContent">
-                    <!-- <iframe src="Personal information/index.html" frameborder="0"  name="contentFrame" height="700" width="100%" ></iframe> -->
                     <iframe src="Dashboard/index.html" frameborder="0"  name="contentFrame" height="700" width="100%" ></iframe>
                 </div>
                 
     </div>
+    
+<!-- =========== Sessions ======= -->
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'get_session.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    if (data.error) {
+                        console.log(data.error);
+                    } else {
+                        // Update the content with session data
+                        var sessionDataDiv = document.getElementById('sessionData');
+                        sessionDataDiv.innerHTML = 'Logged in as: ' + data.email;
+                        // Add other session data to the content as needed
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        });
+    </script>
 
     <!-- =========== Scripts =========  -->
     <script src="navigation.js"></script>
